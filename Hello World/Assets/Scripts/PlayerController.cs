@@ -19,11 +19,11 @@ public class PlayerController : MonoBehaviour
     private float doubleTapTime; // time frame within which a double
                                 // tap would be registered
     
-    private int numDashTaps;        // number of times run has been pressed
     private float lastDashPress;   // time the last side has been pressed
 
-    private bool stillMoving;      // checks whether the right or left movement
-                                   // has been released since 
+    private bool justMoved;      // checks whether the right or left movement
+                                 // has been released since 
+    private float dashDir;      // direction of the dash
 
    
 
@@ -64,7 +64,19 @@ public class PlayerController : MonoBehaviour
         float horizontal = Input.GetAxisRaw("Horizontal");
         float velx = rb.velocity.x;
 
+        float deltaT = Time.time - lastDashPress;
+        lastDashPress = Time.time;
+
+        /*
+        if(horizontal != 0 && justMoved )
+        {
+            velx = hori
+        }
+        else if(horizontal != 0)
+        */
+
         velx = horizontal * runSpeed;
+        //justMoved =
 
         return velx;
     }
